@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     Context context;
     List<Generos> mData;
@@ -33,10 +34,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         holder.txt.setText(mData.get(position).getFamosos());
         holder.img.setImageResource(mData.get(position).getImagen());
+        holder.check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                recib_event(buttonView, position);
+            }
+        });
+
+
     }
 
     @Override
@@ -48,12 +57,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         private ImageView img;
         private TextView txt;
+        private CheckBox check;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             img = itemView.findViewById(R.id.img);
             txt = itemView.findViewById(R.id.name);
+            check = itemView.findViewById(R.id.checkbox_id);
         }
     }
+
+    public abstract void recib_event(View view, int posision);
 }

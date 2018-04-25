@@ -33,11 +33,10 @@
             android:text="Texto de prueba"
             android:textAppearance="?android:textAppearanceLarge" />
 
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/checkbox_id"
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:id="@+id/checkbox_id"/>
 
     </LinearLayout>
 

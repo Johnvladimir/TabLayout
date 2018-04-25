@@ -1,10 +1,22 @@
 package com.example.john.tablayout;
 
-public class Generos {
+import java.io.Serializable;
+
+public class Generos implements Serializable{
 
 
     private String famosos;
     private int imagen;
+    private boolean bool;
+
+
+    public boolean isBool() {
+        return bool;
+    }
+
+    public void setBool(boolean bool) {
+        this.bool = bool;
+    }
 
     public Generos(String famosos, int imagen) {
 
