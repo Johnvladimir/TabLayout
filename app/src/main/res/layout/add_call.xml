@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/car_view"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:elevation="7dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dj"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Texto de prueba"
+            android:textAppearance="?android:textAppearanceLarge" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+
+
+</android.support.v7.widget.CardView>
