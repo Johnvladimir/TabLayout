@@ -11,30 +11,30 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     Context context;
-    List<Generos> mData;
+    ArrayList<Generos> mData;
 
-    public RecyclerViewAdapter(Context context, List<Generos> mData) {
-        this.context = context;
+    public RecyclerViewAdapter(ArrayList<Generos> mData) {
         this.mData = mData;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v;
-        v = LayoutInflater.from(context).inflate(R.layout.add_call, parent, false);
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.add_call, parent, false);
         MyViewHolder vHolder = new MyViewHolder(v);
         return vHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, final int position) {
 
         holder.txt.setText(mData.get(position).getFamosos());
         holder.img.setImageResource(mData.get(position).getImagen());
@@ -61,7 +61,6 @@ public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
             img = itemView.findViewById(R.id.img);
             txt = itemView.findViewById(R.id.name);
             check = itemView.findViewById(R.id.checkbox_id);

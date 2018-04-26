@@ -18,7 +18,7 @@ public class Fragment_Call extends Fragment {
 
     View v;
     private RecyclerView myRecycleView;
-    private List<Generos> lstCall;
+    private ArrayList<Generos> lstCall;
 
     public Fragment_Call() {
     }
@@ -29,7 +29,9 @@ public class Fragment_Call extends Fragment {
 
         v = inflater.inflate(R.layout.call_fragment, container, false);
         myRecycleView = v.findViewById(R.id.recycle_id);
-        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), lstCall) {
+        myRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(lstCall) {
             @Override
             public void recib_event(View view, int posision) {
                 if (lstCall.get(posision).isBool()) {
@@ -42,7 +44,6 @@ public class Fragment_Call extends Fragment {
                 }
             }
         };
-        myRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecycleView.setAdapter(recyclerAdapter);
         return v;
     }
@@ -50,7 +51,6 @@ public class Fragment_Call extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         lstCall = new ArrayList<>();
         lstCall.add(new Generos("David Guetta,Avicii,Skrillex", R.drawable.dj));
         lstCall.add(new Generos("Metallica,AC/DC,Iron Maiden", R.drawable.rock));

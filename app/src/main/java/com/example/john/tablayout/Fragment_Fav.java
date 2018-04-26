@@ -10,14 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Fragment_Fav extends Fragment {
 
     View v;
     RecyclerView recyclerView;
-    private List<Generos> list;
-    Bundle bundle = new Bundle();
+    private ArrayList<Generos> list;
+    Bundle bundle;
 
     public Fragment_Fav() {
     }
@@ -28,7 +29,9 @@ public class Fragment_Fav extends Fragment {
         v = inflater.inflate(R.layout.fav_fragment, container, false);
         bundle = getArguments();
         recyclerView = v.findViewById(R.id.recycleFav_id);
-        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), list) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(list) {
             @Override
             public void recib_event(View view, int posision) {
             }
@@ -41,7 +44,6 @@ public class Fragment_Fav extends Fragment {
             recyclerAdapter.notifyItemRangeChanged(0, list.size());
         }
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerAdapter);
 
 
